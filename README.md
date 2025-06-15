@@ -45,3 +45,56 @@ I am thinking of 2 proposals
 
 
 since proposal 2 is  more complex, let start with proposal 1. For proposal 1, make sure the isotropic for this cube of neurons, and the computation was not just one direction, (but we can compute step by step just more directions, actually we can lay the 3D into 1D, butDifferentiate between different links in different locations) ; these neurons , like 48*48*48 follow the STDP rules with each other like your code above. 
+
+
+get the first version of code
+
+Now, the 3D rendering of firing, is like waves in physics, that one point of light is just a week stirring to get the waves on, but the inner waves seems is the dominate power; so what I want now is let your network focus more on the input, now inner waves. 
+
+after observing 4000 steps, I feel its just random in the inner waves of firing, the shaped like water waves
+
+Get the second version of code
+
+
+python3 02_01_cube_net.py
+
+
+20250614 0144 PT
+waves are still there, I heard you increase front to back, and decrease back to front, that's good, I feel, the fire should not be controlly globally, like biology neurons, it controled inside, one neuron should not fire too many times in one time peorid, not that controled how many percent globally? we do this experiment to mimic brain
+
+
+
+
+
+python3 02_02_cube_net.py --bias 0.04 --d_theta 0.2 --tau_ref 2
+
+
+
+python3 02_02_cube_net.py \
+    --bias 0.008 \
+    --theta0 1.0 \
+    --d_theta 0.35 \
+    --tau_ref 3 \
+    --rho 0.8
+
+
+20250614 1841 PT
+what I am thinking now is that neural fire speed should be 8 times bigger than the input change, I mean when input moves 1, neural activity should be updated 8 times, which correspond to human time sense. In this way, we can also have the input connection afterwards reinforced better since we do not have enough firing now, because the input moves too fast for the neural to learn. give me complete code and ways to run it.
+
+python3 02_03_cube_net.py
+
+
+fire rate too high now, give me a version of code lower than this, but higher than before which I say too low
+
+python3 02_04_cube_net.py
+
+
+then fire rates get too low, Can you think of way to balance fire rate and let it focus on input not inner waves like firing?
+
+python3 02_05_cube_net.py
+
+
+20250614 2051 PT
+one thing, for this 48*48*48 cube, since we want learn to repeat pattern in one layer, I feel, we should not keep isotropic or it will result in big waves back and forth, this is not good. Lets consider this, from the front to the back (output), we make the links sparse, keep the links between each layer as before, cancel the back to front links, but add a residual or recurrent layer to a specific layer to return the fire a little.
+
+python3 03_01_cube_net.py
